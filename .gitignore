@@ -1,0 +1,13 @@
+*.o
+*.gch
+*.pch
+pop
+
+*.aux
+*.fls
+*.synctex.gz
+*.log
+*.fdb_latexmk
+*.toc
+
+*:Zone.identifier
