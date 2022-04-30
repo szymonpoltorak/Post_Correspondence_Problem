@@ -33,7 +33,7 @@ void find_solution(char** A, char** B, int n) {
 			continue;
 		}
 
-		if (index > n) {
+		if (index > n - 1) {
 			printf("WRONG INDEX GIVEN !!!!\n");
 
 			if (choice() == false){
