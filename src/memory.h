@@ -3,7 +3,7 @@
 
 #include <stdbool.h>
 
-void freeAll(char** A, char** B, char* result_A, char* result_B, int n);
+void freeAll(char** A, char** B, char* result_A, char* result_B, int n, int* solution);
 
 char** read_list(int n);
 

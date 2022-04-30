@@ -8,8 +8,7 @@ void find_solution(char** A, char** B, int n) {
 	char* result_A = (char*) malloc(100 * sizeof(*result_A));
 	char* result_B = (char*) malloc(100 * sizeof(*result_B));
 	int* solution = (int*) malloc (100 * sizeof(*solution));
-	int size = 0;
-	int length_A = 0, length_B = 0;
+	int size = 0, length_A = 0, length_B = 0;
 
 	if (result_A == NULL || result_B == NULL || solution == NULL) {
 		fprintf(stderr, "LIST IS NULL !!!!\n");
@@ -27,8 +26,8 @@ void find_solution(char** A, char** B, int n) {
 		if (scanf("%d", &index) != 1){
 			fprintf(stderr, "COULDN'T READ GIVEN INDEX!\n");
 
-			if ((temp = choice()) == false){
-				freeAll(A, B, result_A, result_B, n);
+			if (choice() == false){
+				freeAll(A, B, result_A, result_B, n, solution);
 				exit(EXIT_SUCCESS);
 			}
 			continue;
@@ -38,7 +37,7 @@ void find_solution(char** A, char** B, int n) {
 			printf("WRONG INDEX GIVEN !!!!\n");
 
 			if (choice() == false){
-				freeAll(A, B, result_A, result_B, n);
+				freeAll(A, B, result_A, result_B, n, solution);
 				exit(EXIT_SUCCESS);
 			}
 			continue;
@@ -55,14 +54,12 @@ void find_solution(char** A, char** B, int n) {
 
 		if (strcmp(result_A, result_B) == 0) {
 			print_result(solution, size);
-			freeAll(A, B, result_A, result_B, n);
-			free(solution);
+			freeAll(A, B, result_A, result_B, n, solution);
 			exit(EXIT_SUCCESS);
 		}
 		
 		if ((temp = choice()) == END){
-			freeAll(A, B, result_A, result_B, n);
-			free(solution);
+			freeAll(A, B, result_A, result_B, n, solution);
 			exit(EXIT_SUCCESS);
 		} 
 		else if (temp == REVERSED){
@@ -72,6 +69,7 @@ void find_solution(char** A, char** B, int n) {
 			print_currents(result_A, length_A, result_B, length_B);
 		}
 	}
+	freeAll(A, B, result_A, result_B, n, solution);
 }
 
 void append(char* src, char* dest, int dest_size) {
@@ -84,7 +82,6 @@ void append(char* src, char* dest, int dest_size) {
 
 int choice(void) {
 	char k = 0;
-	int temp = 0;
 
 	printf("Do you want to continue ? Write yes - 'y' or no - 'n' or 'r' to reverse last index\n");
 
@@ -100,10 +97,10 @@ int choice(void) {
 			break;
 		} else if (k == 'r') {
 			return REVERSED;
-		}
-		else {
+		} else {
 			fprintf(stderr, "WRONG CHOICE FOUND !!!\n");
 		}
 	}
+
 	return CONTINUE;
 }

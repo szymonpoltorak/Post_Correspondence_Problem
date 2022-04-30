@@ -10,6 +10,7 @@ void print_list(char** List, int n){
 
 void print_result(int* solution, int size){
 	printf("\nSOLUTION WAS FOUND! :\n");
+
 	for (int i = 0; i < size; i++){
 		printf("%d ", solution[i]);
 	}
@@ -18,10 +19,13 @@ void print_result(int* solution, int size){
 
 void print_currents(char* result_A, int length_A, char* result_B, int length_B){
     printf("\nCurrent lists:\n");
+
 	for (int i = 0; i < length_A; i++){
 		printf("%c", result_A[i]);
 	}
+	
 	printf("\t");
+
 	for (int i = 0; i < length_B; i++){
 		printf("%c", result_B[i]);
 	}

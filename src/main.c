@@ -5,7 +5,7 @@
 #include "prints.h"
 
 int main(void) {
-	int n = 0, temp = 0;
+	int n = 0;
 
 	printf("Please give number of chains: ");
 	if (scanf("%d", &n) != 1){
@@ -13,7 +13,7 @@ int main(void) {
 		exit(EXIT_FAILURE);
 	}
 	
-	temp = getchar();
+	int temp = getchar();
 
 	printf("Please give elements of list A:\n");
 	char** A = read_list(n);
